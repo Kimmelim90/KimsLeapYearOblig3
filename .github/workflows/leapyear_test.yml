@@ -1,4 +1,7 @@
 name: Leap Year Test
+# Fulgte instruksene til han karen her:
+# https://www.youtube.com/watch?v=UEOtZvTCmDo
+
 
 on:
   pull_request:
@@ -32,5 +35,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
 
-      - name: Test App Code
-        run: python /main_test.py
+      - name: Test Leapyear
+        run: pytest test_leapyear.py
