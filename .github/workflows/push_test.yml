@@ -1,0 +1,24 @@
+name: Leap Year Push Test
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./
+
+    strategy:
+      matrix:
+        python-version: [ 3.8, 3.9, 3.10 ]
+
+    env:
+      MODE: "dev"
+
+    steps:
+      - name: Test Leapyear
+        run: pytest test_leapyear.py
+
