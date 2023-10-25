@@ -1,8 +1,6 @@
 name: Leap Year Push Test
 on:
-  push:
-    branches:
-      - main
+  [push]
 
 jobs:
   test:
