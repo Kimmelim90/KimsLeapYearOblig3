@@ -36,4 +36,4 @@ jobs:
           pip install -r ./requirements.txt
 
       - name: Test Leapyear
-        run: test_leapyear.py
+        run: pytest test_leapyear.py
