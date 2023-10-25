@@ -1,12 +1,6 @@
-name: Leap Year Test
-# Fulgte instruksene til han karen her:
-# https://www.youtube.com/watch?v=UEOtZvTCmDo
-
-
+name: Leap Year Push Test
 on:
-  pull_request:
-    branches:
-      - main
+  [push]
 
 jobs:
   test:
@@ -15,14 +9,13 @@ jobs:
       run:
         working-directory: ./
 
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9, 3.10]
+
 
     env:
       MODE: "dev"
 
     steps:
+
       - uses: actions/checkout@v3
 
       - name: Set up Python
@@ -37,3 +30,4 @@ jobs:
 
       - name: Test Leapyear
         run: pytest test_leapyear.py
+

@@ -1,0 +1,39 @@
+name: Leap Year Pull Test
+# Fulgte instruksene til han karen her:
+# https://www.youtube.com/watch?v=UEOtZvTCmDo
+
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
+
+    env:
+      MODE: "dev"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ./requirements.txt
+
+      - name: Test Leapyear
+        run: pytest test_leapyear.py
